@@ -1,0 +1,12 @@
+/Users/tknguyen/Desktop/projects/vsr/vsr-crawler/vsr-crawler.ConsoleApp/bin/Debug/netcoreapp3.0/vsr-crawler.ConsoleApp
+/Users/tknguyen/Desktop/projects/vsr/vsr-crawler/vsr-crawler.ConsoleApp/bin/Debug/netcoreapp3.0/vsr-crawler.ConsoleApp.deps.json
+/Users/tknguyen/Desktop/projects/vsr/vsr-crawler/vsr-crawler.ConsoleApp/bin/Debug/netcoreapp3.0/vsr-crawler.ConsoleApp.runtimeconfig.json
+/Users/tknguyen/Desktop/projects/vsr/vsr-crawler/vsr-crawler.ConsoleApp/bin/Debug/netcoreapp3.0/vsr-crawler.ConsoleApp.runtimeconfig.dev.json
+/Users/tknguyen/Desktop/projects/vsr/vsr-crawler/vsr-crawler.ConsoleApp/bin/Debug/netcoreapp3.0/vsr-crawler.ConsoleApp.dll
+/Users/tknguyen/Desktop/projects/vsr/vsr-crawler/vsr-crawler.ConsoleApp/bin/Debug/netcoreapp3.0/vsr-crawler.ConsoleApp.pdb
+/Users/tknguyen/Desktop/projects/vsr/vsr-crawler/vsr-crawler.ConsoleApp/obj/Debug/netcoreapp3.0/vsr-crawler.ConsoleApp.csprojAssemblyReference.cache
+/Users/tknguyen/Desktop/projects/vsr/vsr-crawler/vsr-crawler.ConsoleApp/obj/Debug/netcoreapp3.0/vsr-crawler.ConsoleApp.csproj.CoreCompileInputs.cache
+/Users/tknguyen/Desktop/projects/vsr/vsr-crawler/vsr-crawler.ConsoleApp/obj/Debug/netcoreapp3.0/vsr-crawler.ConsoleApp.AssemblyInfoInputs.cache
+/Users/tknguyen/Desktop/projects/vsr/vsr-crawler/vsr-crawler.ConsoleApp/obj/Debug/netcoreapp3.0/vsr-crawler.ConsoleApp.AssemblyInfo.cs
+/Users/tknguyen/Desktop/projects/vsr/vsr-crawler/vsr-crawler.ConsoleApp/obj/Debug/netcoreapp3.0/vsr-crawler.ConsoleApp.dll
+/Users/tknguyen/Desktop/projects/vsr/vsr-crawler/vsr-crawler.ConsoleApp/obj/Debug/netcoreapp3.0/vsr-crawler.ConsoleApp.pdb
