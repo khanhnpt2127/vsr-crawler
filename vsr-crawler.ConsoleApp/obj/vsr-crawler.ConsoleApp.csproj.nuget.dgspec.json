@@ -45,6 +45,10 @@
       "frameworks": {
         "netcoreapp3.0": {
           "dependencies": {
+            "HtmlAgilityPack": {
+              "target": "Package",
+              "version": "[1.11.18, )"
+            },
             "Microsoft.AspNetCore.App.Ref": {
               "include": "None",
               "suppressParent": "All",
