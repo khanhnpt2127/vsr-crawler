@@ -1173,7 +1173,7 @@
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
       "Microsoft.EntityFrameworkCore.Design >= 3.1.1",
-      "Microsoft.EntityFrameworkCore.InMemory",
+      "Microsoft.EntityFrameworkCore.InMemory >= 3.1.1",
       "NETStandard.Library >= 2.0.3"
     ]
   },
@@ -1184,11 +1184,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/tknguyen/Desktop/projects/vsr/vsr-crawler/vsr-crawler.Application/vsr-crawler.application.csproj",
+      "projectUniqueName": "/Users/tknguyen/Desktop/projects/vsr/vsr-crawler/vsr-crawler.application/vsr-crawler.application.csproj",
       "projectName": "vsr-crawler.application",
-      "projectPath": "/Users/tknguyen/Desktop/projects/vsr/vsr-crawler/vsr-crawler.Application/vsr-crawler.application.csproj",
+      "projectPath": "/Users/tknguyen/Desktop/projects/vsr/vsr-crawler/vsr-crawler.application/vsr-crawler.application.csproj",
       "packagesPath": "/Users/tknguyen/.nuget/packages/",
-      "outputPath": "/Users/tknguyen/Desktop/projects/vsr/vsr-crawler/vsr-crawler.Application/obj/",
+      "outputPath": "/Users/tknguyen/Desktop/projects/vsr/vsr-crawler/vsr-crawler.application/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
@@ -1224,7 +1224,7 @@
           },
           "Microsoft.EntityFrameworkCore.InMemory": {
             "target": "Package",
-            "version": "(, )"
+            "version": "[3.1.1, )"
           },
           "NETStandard.Library": {
             "suppressParent": "All",
