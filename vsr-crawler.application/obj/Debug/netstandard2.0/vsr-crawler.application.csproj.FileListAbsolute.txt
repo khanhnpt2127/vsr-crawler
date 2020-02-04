@@ -2,7 +2,6 @@
 /Users/tknguyen/Desktop/projects/vsr/vsr-crawler/vsr-crawler.application/bin/Debug/netstandard2.0/vsr-crawler.application.dll
 /Users/tknguyen/Desktop/projects/vsr/vsr-crawler/vsr-crawler.application/bin/Debug/netstandard2.0/vsr-crawler.application.pdb
 /Users/tknguyen/Desktop/projects/vsr/vsr-crawler/vsr-crawler.application/obj/Debug/netstandard2.0/vsr-crawler.application.csprojAssemblyReference.cache
-/Users/tknguyen/Desktop/projects/vsr/vsr-crawler/vsr-crawler.application/obj/Debug/netstandard2.0/vsr-crawler.application.csproj.CoreCompileInputs.cache
 /Users/tknguyen/Desktop/projects/vsr/vsr-crawler/vsr-crawler.application/obj/Debug/netstandard2.0/vsr-crawler.application.AssemblyInfoInputs.cache
 /Users/tknguyen/Desktop/projects/vsr/vsr-crawler/vsr-crawler.application/obj/Debug/netstandard2.0/vsr-crawler.application.AssemblyInfo.cs
 /Users/tknguyen/Desktop/projects/vsr/vsr-crawler/vsr-crawler.application/obj/Debug/netstandard2.0/vsr-crawler.application.dll
