@@ -5,18 +5,18 @@ namespace vsr_crawler.ConsoleApp.Models
 {
     public class CrawlerContext : DbContext
     { 
-        public DbSet<TestClass> TestClasses { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder options)
             => options.UseSqlite("Data Source=blogging.db");
+
+
+        
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Faculty>()
+                .HasMany(f => f.FacultyMembers)
+                .WithOne(e => e.Faculty);
+        }
     }
-
-    public class TestClass 
-    {
-        public int TestClassId { get; set; }
-        public string Name { get; set; }
-    }
-
-
 }
 
 
