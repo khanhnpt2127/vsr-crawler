@@ -15,6 +15,9 @@ namespace vsr_crawler.ConsoleApp.Models
             modelBuilder.Entity<Faculty>()
                 .HasMany(f => f.FacultyMembers)
                 .WithOne(e => e.Faculty);
+
+
+            modelBuilder.Entity<Crawler>();
         }
     }
 }
