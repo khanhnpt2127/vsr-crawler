@@ -3,12 +3,14 @@ using HtmlAgilityPack;
 using System.Text.RegularExpressions;
 using vsr_crawler.ConsoleApp.Models;
 using System.Linq;
+using System.Net;
+using System.IO;
 
 namespace vsr_crawler.ConsoleApp
 {
     class Program
     {
-
+        
         static string GetChildValueByInnerHtmlWithSpecialContains(HtmlNode htmlSources, int type = 0) {
             string res = "";
 
@@ -27,6 +29,7 @@ namespace vsr_crawler.ConsoleApp
 
         static string GetChildValueByAttribute(HtmlNode htmlSources) {
             System.Console.WriteLine(htmlSources.Attributes["src"].Value);
+
             return htmlSources.Attributes["src"].Value;
         }
 
@@ -38,31 +41,44 @@ namespace vsr_crawler.ConsoleApp
                     res = htmlSources.LastChild.InnerHtml;
                 else  
                     res = Regex.Replace(htmlSources.ChildNodes[0].InnerHtml, @"\s+", "");
-                
-                
             }
             
             System.Console.WriteLine(res);
             return res;
         }
 
+
+
+        static bool DownloadImageFromURL(string url, string destinationPath, string nameOfImage) {
+            try
+            {
+
+                using (WebClient client = new WebClient())
+                {
+                    client.DownloadFile(new Uri("http://"+url), destinationPath + nameOfImage);
+                }
+
+                return true;
+            }
+            catch (System.Exception)
+            {
+                return false;
+            }
+        } 
+
         static void Main(string[] args)
         {
-
-
-
             using(var context = new CrawlerContext()) {
                 var crawler = context.Crawler.ToList();
             }
-
-
 
             System.Console.WriteLine("App is running ... ");
 
             try
             {
+                string uri = "https://www.tu-chemnitz.de/informatik/HomePages/GDV/mitarbeiter.php";
                 HtmlWeb web = new HtmlWeb();  
-                HtmlDocument document = web.Load("https://www.tu-chemnitz.de/informatik/HomePages/GDV/mitarbeiter.php"); 
+                HtmlDocument document = web.Load(uri);
             
                 var nodes = document.DocumentNode.SelectNodes("//main//table");
 
@@ -85,7 +101,32 @@ namespace vsr_crawler.ConsoleApp
 
                     if(selectedMainImgNodes != null)
                     foreach(var selectedNode in selectedMainImgNodes) {
-                        GetChildValueByAttribute(selectedNode);
+                        var imagePath = GetChildValueByAttribute(selectedNode);
+                        imagePath = Regex.Replace(imagePath, @"\s+", String.Empty);
+                        Uri rootUri = new Uri(uri); 
+
+                        string queryUri = "";
+                        string lastItem = rootUri.Segments.Last();
+                        foreach (var item in rootUri.Segments)
+                        {
+                            if(!item.Equals(lastItem))
+                                queryUri += item;
+                        }
+
+                        String[] strlist = imagePath.Split("/",  
+                                    StringSplitOptions.RemoveEmptyEntries); 
+
+                        string NameOfFile = strlist.LastOrDefault();
+                        System.Console.WriteLine(NameOfFile);
+                        if(string.IsNullOrEmpty(NameOfFile)) {
+                            Random random = new Random();  
+                            NameOfFile = "default_" +  random.Next();
+                        }
+                        //TODO: getImage()
+                        if(!imagePath.Contains("http")) {
+                            imagePath = rootUri.Host + queryUri + imagePath; 
+                        }
+                        DownloadImageFromURL(imagePath, Environment.CurrentDirectory + "/images/",NameOfFile); 
                     }
 
                     // info: get Name
