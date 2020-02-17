@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using vsr_crawler.ConsoleApp.Models;
 
 namespace vsr_crawler.ConsoleApp.Migrations
 {
     [DbContext(typeof(CrawlerContext))]
-    partial class CrawlerContextModelSnapshot : ModelSnapshot
+    [Migration("20200217212126_CrawlerData")]
+    partial class CrawlerData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

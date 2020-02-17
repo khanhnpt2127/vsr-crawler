@@ -9,6 +9,7 @@ namespace vsr_crawler.ConsoleApp.Models
             => options.UseSqlite("Data Source=blogging.db");
 
         public DbSet<Crawler> Crawler { get; set; }
+        public DbSet<CrawlerData> CrawlerData { get; set; }
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -18,6 +19,7 @@ namespace vsr_crawler.ConsoleApp.Models
 
 
             modelBuilder.Entity<Crawler>();
+            modelBuilder.Entity<CrawlerData>();
         }
     }
 }

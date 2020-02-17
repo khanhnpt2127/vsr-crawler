@@ -5,12 +5,12 @@ using vsr_crawler.ConsoleApp.Models;
 using System.Linq;
 using System.Net;
 using System.IO;
+using System.Collections.Generic;
 
 namespace vsr_crawler.ConsoleApp
 {
     class Program
     {
-        
         static string GetChildValueByInnerHtmlWithSpecialContains(HtmlNode htmlSources, int type = 0) {
             string res = "";
 
@@ -52,7 +52,6 @@ namespace vsr_crawler.ConsoleApp
         static bool DownloadImageFromURL(string url, string destinationPath, string nameOfImage) {
             try
             {
-
                 using (WebClient client = new WebClient())
                 {
                     client.DownloadFile(new Uri("http://"+url), destinationPath + nameOfImage);
@@ -68,9 +67,6 @@ namespace vsr_crawler.ConsoleApp
 
         static void Main(string[] args)
         {
-            using(var context = new CrawlerContext()) {
-                var crawler = context.Crawler.ToList();
-            }
 
             System.Console.WriteLine("App is running ... ");
 
@@ -82,7 +78,13 @@ namespace vsr_crawler.ConsoleApp
             
                 var nodes = document.DocumentNode.SelectNodes("//main//table");
 
+                List<string> listOfRoom = new List<string>();
+                List<string> listOfImage = new List<string>();
+                List<string> listOfName = new List<string>();
+
                 foreach(HtmlNode node in nodes) {
+
+                    CrawlerData crawlerData = new CrawlerData();
 
                     //info: get Room
 
@@ -92,7 +94,7 @@ namespace vsr_crawler.ConsoleApp
                     if(selectedMainRoomNodes != null)
                     
                     foreach(var selectedNode in selectedMainRoomNodes) {
-                        GetChildValueByInnerHtmlWithSpecialContains(selectedNode,1);
+                        listOfRoom.Add(GetChildValueByInnerHtmlWithSpecialContains(selectedNode,1));
                     }
 
 
@@ -127,6 +129,7 @@ namespace vsr_crawler.ConsoleApp
                             imagePath = rootUri.Host + queryUri + imagePath; 
                         }
                         DownloadImageFromURL(imagePath, Environment.CurrentDirectory + "/images/",NameOfFile); 
+                        listOfImage.Add(NameOfFile);
                     }
 
                     // info: get Name
@@ -134,10 +137,35 @@ namespace vsr_crawler.ConsoleApp
                     var selectedMainNameNodes = node.SelectNodes(".//td[2]");
 
                     if(selectedMainNameNodes != null)
-                        foreach(var selectedNode in selectedMainNameNodes) 
-                            GetChildValueByInnerHtml(selectedNode, 1);
+                        foreach(var selectedNode in selectedMainNameNodes){ 
+                            listOfName.Add(GetChildValueByInnerHtml(selectedNode, 1));
+                        }
+
+
+                    
+                    //info: save to DB
+                    /*
+                    }*/
                 }
 
+
+                if(listOfImage.Count == listOfName.Count && listOfImage.Count == listOfRoom.Count) {
+                    List<CrawlerData> listOfCrawlerData = new List<CrawlerData>();
+                    for (int i = 0; i < listOfName.Count; i++)
+                    {
+                        listOfCrawlerData.Add(new CrawlerData { 
+                            Name = listOfName[i],
+                            ImageName = listOfImage[i],
+                            Room = listOfRoom[i]
+                        });
+                    }
+
+                    using (var context = new CrawlerContext())
+                    {
+                        context.CrawlerData.AddRange(listOfCrawlerData);
+                        context.SaveChanges();
+                    }
+                }
                 Console.ReadLine();
             }
             catch(Exception ex) {
