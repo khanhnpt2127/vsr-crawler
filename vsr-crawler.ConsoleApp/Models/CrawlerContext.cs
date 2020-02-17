@@ -8,7 +8,7 @@ namespace vsr_crawler.ConsoleApp.Models
         protected override void OnConfiguring(DbContextOptionsBuilder options)
             => options.UseSqlite("Data Source=blogging.db");
 
-
+        public DbSet<Crawler> Crawler { get; set; }
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

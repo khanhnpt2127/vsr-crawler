@@ -1,18 +1,26 @@
 ﻿using System;
 using HtmlAgilityPack; 
+using System.Text.RegularExpressions;
+using vsr_crawler.ConsoleApp.Models;
+using System.Linq;
+
 namespace vsr_crawler.ConsoleApp
 {
     class Program
     {
 
-        static string GetChildValueByInnerHtmlWithSpecialContains(HtmlNode htmlSources) {
+        static string GetChildValueByInnerHtmlWithSpecialContains(HtmlNode htmlSources, int type = 0) {
             string res = "";
 
             if(!string.IsNullOrWhiteSpace(htmlSources.InnerHtml))
-            if(htmlSources.InnerHtml.Contains("Room")) {
-                System.Console.WriteLine((htmlSources.InnerHtml));
+            if(htmlSources.InnerHtml.Contains("Raum") || htmlSources.InnerHtml.Contains("Zimmer") && type == 0) {
                 res = htmlSources.InnerHtml;
+            } else {
+                //Console.WriteLine(htmlSources.ChildNodes[2].InnerHtml);
+                res = Regex.Replace(htmlSources.ChildNodes[2].InnerHtml, @"\s+", "");
             }
+
+            System.Console.WriteLine(res);
             return res;
         }
 
@@ -22,43 +30,58 @@ namespace vsr_crawler.ConsoleApp
             return htmlSources.Attributes["src"].Value;
         }
 
-        static string GetChildValueByInnerHtml(HtmlNode htmlSources) {
+        static string GetChildValueByInnerHtml(HtmlNode htmlSources, int type = 0) {
             string res = "";
 
             if(!string.IsNullOrWhiteSpace(htmlSources.InnerHtml)) {
-                System.Console.WriteLine((htmlSources.InnerHtml));
-                res = htmlSources.InnerHtml;
+                if(htmlSources.HasChildNodes && type == 0) 
+                    res = htmlSources.LastChild.InnerHtml;
+                else  
+                    res = Regex.Replace(htmlSources.ChildNodes[0].InnerHtml, @"\s+", "");
+                
+                
             }
             
+            System.Console.WriteLine(res);
             return res;
         }
 
         static void Main(string[] args)
         {
 
+
+
+            using(var context = new CrawlerContext()) {
+                var crawler = context.Crawler.ToList();
+            }
+
+
+
             System.Console.WriteLine("App is running ... ");
 
             try
             {
                 HtmlWeb web = new HtmlWeb();  
-                HtmlDocument document = web.Load("http://www.tu-chemnitz.de/informatik/HomePages/Medieninformatik/team.php.en"); 
+                HtmlDocument document = web.Load("https://www.tu-chemnitz.de/informatik/HomePages/GDV/mitarbeiter.php"); 
             
-                var nodes = document.DocumentNode.SelectNodes("//main//div[@class='mitarbeiter']");
+                var nodes = document.DocumentNode.SelectNodes("//main//table");
 
                 foreach(HtmlNode node in nodes) {
 
                     //info: get Room
 
-                    var selectedMainRoomNodes = node.SelectNodes(".//p");
+                    var selectedMainRoomNodes = node.SelectNodes(".//td[2]");
                     //System.Console.WriteLine(h3[h3.Count-1].InnerHtml);
                     
                     if(selectedMainRoomNodes != null)
+                    
                     foreach(var selectedNode in selectedMainRoomNodes) {
-                        GetChildValueByInnerHtmlWithSpecialContains(selectedNode);
+                        GetChildValueByInnerHtmlWithSpecialContains(selectedNode,1);
                     }
 
+
                     // info: get Img
-                    var selectedMainImgNodes = node.SelectNodes(".//img");
+                    var selectedMainImgNodes = node.SelectNodes(".//td[1]//img");
 
                     if(selectedMainImgNodes != null)
                     foreach(var selectedNode in selectedMainImgNodes) {
@@ -67,22 +90,12 @@ namespace vsr_crawler.ConsoleApp
 
                     // info: get Name
 
-                    var selectedMainNameNodes = node.SelectNodes(".//h3");
+                    var selectedMainNameNodes = node.SelectNodes(".//td[2]");
 
                     if(selectedMainNameNodes != null)
                         foreach(var selectedNode in selectedMainNameNodes) 
-                            GetChildValueByInnerHtml(selectedNode);
+                            GetChildValueByInnerHtml(selectedNode, 1);
                 }
-                /*
-                foreach(HtmlNode node in nodes) 
-                {
-                   var vcard = node.SelectNodes(".//address"); 
-                   if(vcard != null) {
-                   foreach(HtmlNode member in vcard) {
-                       Console.WriteLine(member.SelectSingleNode("//img").Attributes["src"].Value);
-                   } }
-                }
-                */
 
                 Console.ReadLine();
             }
