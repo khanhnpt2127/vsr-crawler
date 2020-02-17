@@ -17,6 +17,10 @@ namespace vsr_crawler.ConsoleApp.Models
         public string NamePath { get; set; }
         public string RoomPath { get; set; }
         public int Type { get; set; }
+
+
+        public Professorship Professorship { get; set; }
+
     }
 }
 

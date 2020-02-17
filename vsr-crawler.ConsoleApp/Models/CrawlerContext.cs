@@ -9,8 +9,11 @@ namespace vsr_crawler.ConsoleApp.Models
             => options.UseSqlite("Data Source=blogging.db");
 
         public DbSet<Crawler> Crawler { get; set; }
+
         public DbSet<CrawlerData> CrawlerData { get; set; }
-        
+
+        public DbSet<Professorship> Professorships { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Faculty>()
@@ -18,7 +21,7 @@ namespace vsr_crawler.ConsoleApp.Models
                 .WithOne(e => e.Faculty);
 
 
-            modelBuilder.Entity<Crawler>();
+            modelBuilder.Entity<Crawler>().HasOne(f => f.Professorship).WithMany(e => e.Crawlers);
             modelBuilder.Entity<CrawlerData>();
         }
     }
