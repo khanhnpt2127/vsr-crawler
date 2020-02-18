@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using vsr_crawler.ConsoleApp.Models;
 
 namespace vsr_crawler.ConsoleApp.Migrations
 {
     [DbContext(typeof(CrawlerContext))]
-    partial class CrawlerContextModelSnapshot : ModelSnapshot
+    [Migration("20200218114310_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -35,9 +37,6 @@ namespace vsr_crawler.ConsoleApp.Migrations
                     b.Property<string>("NamePath")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ProfessorshipId")
-                        .HasColumnType("int");
-
                     b.Property<string>("RoomPath")
                         .HasColumnType("nvarchar(max)");
 
@@ -49,17 +48,14 @@ namespace vsr_crawler.ConsoleApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProfessorshipId");
-
                     b.ToTable("Crawler");
                 });
 
             modelBuilder.Entity("vsr_crawler.ConsoleApp.Models.CrawlerData", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("CrawlerDataId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ImageName")
                         .HasColumnType("nvarchar(max)");
@@ -70,31 +66,9 @@ namespace vsr_crawler.ConsoleApp.Migrations
                     b.Property<string>("Room")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("CrawlerDataId");
 
                     b.ToTable("CrawlerData");
-                });
-
-            modelBuilder.Entity("vsr_crawler.ConsoleApp.Models.Professorship", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Professorships");
-                });
-
-            modelBuilder.Entity("vsr_crawler.ConsoleApp.Models.Crawler", b =>
-                {
-                    b.HasOne("vsr_crawler.ConsoleApp.Models.Professorship", "Professorship")
-                        .WithMany("Crawlers")
-                        .HasForeignKey("ProfessorshipId");
                 });
 #pragma warning restore 612, 618
         }

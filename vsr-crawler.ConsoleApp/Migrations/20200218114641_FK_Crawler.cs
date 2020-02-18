@@ -2,7 +2,7 @@
 
 namespace vsr_crawler.ConsoleApp.Migrations
 {
-    public partial class Professorship : Migration
+    public partial class FK_Crawler : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -10,19 +10,6 @@ namespace vsr_crawler.ConsoleApp.Migrations
                 name: "ProfessorshipId",
                 table: "Crawler",
                 nullable: true);
-
-            migrationBuilder.CreateTable(
-                name: "Professorships",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Professorships", x => x.Id);
-                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Crawler_ProfessorshipId",
@@ -43,9 +30,6 @@ namespace vsr_crawler.ConsoleApp.Migrations
             migrationBuilder.DropForeignKey(
                 name: "FK_Crawler_Professorships_ProfessorshipId",
                 table: "Crawler");
-
-            migrationBuilder.DropTable(
-                name: "Professorships");
 
             migrationBuilder.DropIndex(
                 name: "IX_Crawler_ProfessorshipId",

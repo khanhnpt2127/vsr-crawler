@@ -1,0 +1,3 @@
+INSERT INTO Crawler (Id, Url, MainDivPath, ImgPath, NamePath, RoomPath, Type) VALUES (1, 'http://www.tu-chemnitz.de/informatik/HomePages/Medieninformatik/team.php', '//main//div[@class=''mitarbeiter'']', './/img', './/h3', './/p', 0);
+INSERT INTO Crawler (Id, Url, MainDivPath, ImgPath, NamePath, RoomPath, Type) VALUES (2, 'https://osg.informatik.tu-chemnitz.de/Staff/index.php?lang=de', '//address//div', './/img', './/h4', './/div[contains(@class, ''adr'')]', 0);
+INSERT INTO Crawler (Id, Url, MainDivPath, ImgPath, NamePath, RoomPath, Type) VALUES (3, 'https://www.tu-chemnitz.de/informatik/HomePages/GDV/mitarbeiter.php', '//main//table', './/td[1]//img', './/td[2]', './/td[2]', 1);

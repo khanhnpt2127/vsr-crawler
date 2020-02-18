@@ -19,12 +19,16 @@ namespace vsr_crawler.ConsoleApp
                 if (htmlSources.InnerHtml.Contains("Raum") || htmlSources.InnerHtml.Contains("Zimmer") && type == 0)
                 {
                     res = htmlSources.InnerHtml;
+                } 
+                else if (type == 2) 
+                {
+                    res = htmlSources.InnerHtml;
                 }
-                else if (type != 0)
+                else if (type == 1)
                 {
                     //Console.WriteLine(htmlSources.ChildNodes[2].InnerHtml);
                     res = Regex.Replace(htmlSources.ChildNodes[2].InnerHtml, @"\s+", "");
-                }
+                } 
 
             System.Console.WriteLine(res);
             return res;
@@ -121,7 +125,9 @@ namespace vsr_crawler.ConsoleApp
 
                             foreach (var selectedNode in selectedMainRoomNodes)
                             {
-                                listOfRoom.Add(GetChildValueByInnerHtmlWithSpecialContains(selectedNode, crawler.Type));
+                                var res = GetChildValueByInnerHtmlWithSpecialContains(selectedNode, crawler.Type);
+                                if(!string.IsNullOrEmpty(res))
+                                    listOfRoom.Add(res);
                             }
 
 
@@ -175,17 +181,26 @@ namespace vsr_crawler.ConsoleApp
                     }
 
 
-                    if (listOfImage.Count == listOfName.Count && listOfImage.Count == listOfRoom.Count)
+                    if (listOfImage.Count == listOfName.Count) 
                     {
                         List<CrawlerData> listOfCrawlerData = new List<CrawlerData>();
                         for (int i = 0; i < listOfName.Count; i++)
                         {
-                            listOfCrawlerData.Add(new CrawlerData
-                            {
-                                Name = listOfName[i],
-                                ImageName = listOfImage[i],
-                                Room = listOfRoom[i]
-                            });
+                            try {
+                                listOfCrawlerData.Add(new CrawlerData
+                                {
+                                    Name = listOfName[i],
+                                    ImageName = listOfImage[i],
+                                    Room = listOfRoom[i]
+                                });
+                            } catch {
+                                listOfCrawlerData.Add(new CrawlerData
+                                {
+                                    Name = listOfName[i],
+                                    ImageName = listOfImage[i],
+                                    Room = "" 
+                                });
+                            }
                         }
 
                         using (var context = new CrawlerContext())
@@ -198,10 +213,6 @@ namespace vsr_crawler.ConsoleApp
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex);
-                }
-                finally
-                {
-                    Console.WriteLine("1st");
                 }
             }
         }

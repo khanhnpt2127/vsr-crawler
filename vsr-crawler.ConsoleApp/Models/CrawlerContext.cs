@@ -16,18 +16,12 @@ namespace vsr_crawler.ConsoleApp.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            /*
-            modelBuilder.Entity<Faculty>()
-                .HasMany(f => f.FacultyMembers)
-                .WithOne(e => e.Faculty);
-            */
 
-/*
             modelBuilder.Entity<Professorship>()
                     .HasMany(f => f.Crawlers)
                     .WithOne(e => e.Professorship);
-                    */
-            //modelBuilder.Entity<CrawlerData>();
+
+            modelBuilder.Entity<CrawlerData>().Property(x => x.Id).ValueGeneratedOnAdd();
         }
     }
 }
