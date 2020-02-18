@@ -6,7 +6,7 @@ namespace vsr_crawler.ConsoleApp.Models
     public class CrawlerContext : DbContext
     { 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
-            => options.UseSqlite("Data Source=blogging.db");
+            => options.UseSqlServer("Data Source=127.0.0.1,1433;Database=VsrCrawler;User Id=sa; Password=@1234a56");
 
         public DbSet<Crawler> Crawler { get; set; }
 
@@ -16,13 +16,18 @@ namespace vsr_crawler.ConsoleApp.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            /*
             modelBuilder.Entity<Faculty>()
                 .HasMany(f => f.FacultyMembers)
                 .WithOne(e => e.Faculty);
+            */
 
-
-            modelBuilder.Entity<Crawler>().HasOne(f => f.Professorship).WithMany(e => e.Crawlers);
-            modelBuilder.Entity<CrawlerData>();
+/*
+            modelBuilder.Entity<Professorship>()
+                    .HasMany(f => f.Crawlers)
+                    .WithOne(e => e.Professorship);
+                    */
+            //modelBuilder.Entity<CrawlerData>();
         }
     }
 }

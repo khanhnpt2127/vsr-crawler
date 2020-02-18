@@ -1,8 +1,13 @@
+using System;
+using System.ComponentModel.DataAnnotations;
+
 namespace vsr_crawler.ConsoleApp.Models 
 {
     public class CrawlerData
     {
-        public int Id { get; set; }
+        //public int Id { get; set; }
+
+        public Guid CrawlerDataId { get; set; }
 
         public string Name { get; set; }
 
