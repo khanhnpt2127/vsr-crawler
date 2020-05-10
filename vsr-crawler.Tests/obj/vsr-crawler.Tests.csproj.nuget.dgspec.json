@@ -1,28 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "/Users/tknguyen/Desktop/projects/vsr/vsr-crawler/vsr-crawler.Tests/vsr-crawler.Tests.csproj": {}
+    "C:\\Users\\khanh\\Desktop\\Projects\\vsr-crawler\\vsr-crawler.Tests\\vsr-crawler.Tests.csproj": {}
   },
   "projects": {
-    "/Users/tknguyen/Desktop/projects/vsr/vsr-crawler/vsr-crawler.application/vsr-crawler.application.csproj": {
+    "C:\\Users\\khanh\\Desktop\\Projects\\vsr-crawler\\vsr-crawler.application\\vsr-crawler.models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/tknguyen/Desktop/projects/vsr/vsr-crawler/vsr-crawler.application/vsr-crawler.application.csproj",
-        "projectName": "vsr-crawler.application",
-        "projectPath": "/Users/tknguyen/Desktop/projects/vsr/vsr-crawler/vsr-crawler.application/vsr-crawler.application.csproj",
-        "packagesPath": "/Users/tknguyen/.nuget/packages/",
-        "outputPath": "/Users/tknguyen/Desktop/projects/vsr/vsr-crawler/vsr-crawler.application/obj/",
+        "projectUniqueName": "C:\\Users\\khanh\\Desktop\\Projects\\vsr-crawler\\vsr-crawler.application\\vsr-crawler.models.csproj",
+        "projectName": "vsr-crawler.models",
+        "projectPath": "C:\\Users\\khanh\\Desktop\\Projects\\vsr-crawler\\vsr-crawler.application\\vsr-crawler.models.csproj",
+        "packagesPath": "C:\\Users\\khanh\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\khanh\\Desktop\\Projects\\vsr-crawler\\vsr-crawler.application\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "/Users/tknguyen/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\khanh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -43,11 +42,15 @@
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[3.1.1, )"
+              "version": "[3.1.3, )"
             },
-            "Microsoft.EntityFrameworkCore.InMemory": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[3.1.1, )"
+              "version": "[3.1.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer.Design": {
+              "target": "Package",
+              "version": "[1.1.6, )"
             },
             "NETStandard.Library": {
               "suppressParent": "All",
@@ -66,36 +69,35 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.101/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/tknguyen/Desktop/projects/vsr/vsr-crawler/vsr-crawler.Tests/vsr-crawler.Tests.csproj": {
+    "C:\\Users\\khanh\\Desktop\\Projects\\vsr-crawler\\vsr-crawler.Tests\\vsr-crawler.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/tknguyen/Desktop/projects/vsr/vsr-crawler/vsr-crawler.Tests/vsr-crawler.Tests.csproj",
+        "projectUniqueName": "C:\\Users\\khanh\\Desktop\\Projects\\vsr-crawler\\vsr-crawler.Tests\\vsr-crawler.Tests.csproj",
         "projectName": "vsr-crawler.Tests",
-        "projectPath": "/Users/tknguyen/Desktop/projects/vsr/vsr-crawler/vsr-crawler.Tests/vsr-crawler.Tests.csproj",
-        "packagesPath": "/Users/tknguyen/.nuget/packages/",
-        "outputPath": "/Users/tknguyen/Desktop/projects/vsr/vsr-crawler/vsr-crawler.Tests/obj/",
+        "projectPath": "C:\\Users\\khanh\\Desktop\\Projects\\vsr-crawler\\vsr-crawler.Tests\\vsr-crawler.Tests.csproj",
+        "packagesPath": "C:\\Users\\khanh\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\khanh\\Desktop\\Projects\\vsr-crawler\\vsr-crawler.Tests\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "/Users/tknguyen/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\khanh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.0": {
             "projectReferences": {
-              "/Users/tknguyen/Desktop/projects/vsr/vsr-crawler/vsr-crawler.application/vsr-crawler.application.csproj": {
-                "projectPath": "/Users/tknguyen/Desktop/projects/vsr/vsr-crawler/vsr-crawler.application/vsr-crawler.application.csproj"
+              "C:\\Users\\khanh\\Desktop\\Projects\\vsr-crawler\\vsr-crawler.application\\vsr-crawler.models.csproj": {
+                "projectPath": "C:\\Users\\khanh\\Desktop\\Projects\\vsr-crawler\\vsr-crawler.application\\vsr-crawler.models.csproj"
               }
             }
           }
@@ -140,6 +142,10 @@
             {
               "name": "Microsoft.NETCore.App.Ref",
               "version": "[3.0.0, 3.0.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[3.0.0, 3.0.0]"
             }
           ],
           "frameworkReferences": {
@@ -147,7 +153,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.101/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

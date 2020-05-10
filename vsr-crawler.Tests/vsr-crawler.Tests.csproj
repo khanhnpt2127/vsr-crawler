@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\vsr-crawler.application\vsr-crawler.application.csproj" />
+    <ProjectReference Include="..\vsr-crawler.application\vsr-crawler.models.csproj" />
   </ItemGroup>
 
 </Project>
